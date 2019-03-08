@@ -1,0 +1,31 @@
+[package]
+name = "grpc_greeter"
+version = "0.1.0"
+publish = false
+
+[lib]
+doctest = false
+test = false
+
+[dependencies]
+futures = "0.1.16"
+protobuf = "2.0.2"
+
+# NOTE: (By default, the secure feature is enabled)
+# secure feature enables support for TLS encryption and some authentication mechanism.
+# turn on default-features = true, and Go (>=1.7) is required, because gRPC core depends on boringssl,
+# which uses go to generate some data sets.
+grpcio = { version = "0.4", default-features = false, features = ["protobuf-codec"] }
+
+[build-dependencies]
+protoc-grpcio = "0.3"
+
+
+[[bin]]
+name = "greeter_client"
+test = false
+
+[[bin]]
+name = "greeter_server"
+test = false
+
